@@ -11,8 +11,8 @@ Event.destroy_all
 Attendance.destroy_all
 
 
-5.times do |index|
-  u = User.create(first_name: Faker::Name.name, last_name: Faker::Name.last_name, description: Faker::Movie.quote, email: "azoulco" + index.to_s + "yopmail.com")
-  #e = Event.create(start_date: Date.today + index, duration: 5 * index ,title: Faker::Name.initials(number: 10), description: Faker::String.random(length: [0, 50]), price: Faker::Number.between(from: 1, to: 1000), location: Faker::Nation.capital_city, admin_id: u.id)
-  #a = Attendance.create(title: Faker::Movie.name)
+1.times do |index|
+  u = User.create(first_name: Faker::Name.name, last_name: Faker::Name.last_name, description: Faker::Movie.quote, email: "azoulco" + index.to_s + "@yopmail.com")
+  e = Event.create(start_date: Date.today + 1, duration: 10 ,title: "Faker::Name.initials(number: 10)", description: "Faker::Name.initials(number: 30)", price: Faker::Number.between(from: 1, to: 1000), location: Faker::Nation.capital_city, admin_id: u.id)
+  a = Attendance.create(user_id: u.id, event_id: e.id)
 end

@@ -3,11 +3,9 @@ class Event < ApplicationRecord
   has_many :attendances, dependent: :destroy 
   has_many :users, through: :attendances
 
-  validates :start_after_today,
-  presence:true
+  validate :start_after_today?
 
-  validates :duration_modulo_5,
-  presence:true
+  validate :duration_modulo_5?
 
   validates :title,
   presence:true,
@@ -26,12 +24,12 @@ class Event < ApplicationRecord
 
   private
 
-  def start_after_today
+  def start_after_today?
     errors.add(:start_date, "ne peut etre créé dans le passé") unless
       start_date.present? && start_date > Date.today
   end 
 
-  def duration_modulo_5
+  def duration_modulo_5?
     errors.add(:duration, "doit etre positif et un multiple de 5") unless
       duration%5 == 0 && duration > 0
   end  

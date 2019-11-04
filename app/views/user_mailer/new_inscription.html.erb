@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @attendance.event.admin.first_name %>, il y a un nouvel inscrit !</h1>
+    <p>
+      Son prénom est : <%= @attendance.user.first_name %> (voici son mail <%= @attendance.user.email %>).
+    </p>
+    <p>
+      Pour accéder à ton espace perso, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur real-eventbrute !
+  </body>
+</html>
