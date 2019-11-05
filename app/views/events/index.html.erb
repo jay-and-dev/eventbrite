@@ -1,2 +1,19 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="container">
+  <h1 class="text-center mt-5 mb-5">Bienvenue mon ami !</h1>
+  <h2 class="text-center mb-5">Ici, c'est le monde des events, retrouve ci-dessous les derniers events !</h2>
+  <p class="text-center"><%= link_to "Créer un nouvel événement", new_event_path, :class => "btn btn-success" %></p>
+  <div class="text-center">
+    <div class= "row text-center">
+      <% @events.each do |event| %>
+        <div class="card m-2 shadow-sm p-3 mb-5  rounded hoverable event" style="width: 14rem;">
+          <div class="card-body">
+            <h4 class="card-title"><%= event.title %></h4>
+            <h6>Participants (<%= event.users.count %>)</h6>
+            <p class="card-text">Organisateur :<%= event.admin.first_name %></p>
+            <p><%= link_to "Lire la suite", event_path(event.id), class: "btn btn-primary" %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
