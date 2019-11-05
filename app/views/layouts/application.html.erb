@@ -18,22 +18,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-          <% if session[:user_id] == nil %>
-          <li class="nav-item dropdown">
-            <%= link_to "S'inscrire/ Se connecter", nil, class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %> 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to "S'inscrire", nil, class: "dropdown-item" %>
-              <%= link_to "Se connecter", nil, class: "dropdown-item" %>
-            </div>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown">
+              <%= link_to "Mon profil", nil, class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %> 
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to "Mon profil", nil, class: "dropdown-item" %>
+                <%= link_to "Se déconnecter", destroy_user_session_path, class: "nav-link", method: :delete %>
+              </div>
+            </li>
           <% else %>
-          <li class="nav-item dropdown">
-            <%= link_to "Mon profil", nil, class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %> 
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to "Mon profil", nil, class: "dropdown-item" %>
-              <%= link_to "Se déconnecter", nil, class: "nav-link", method: :delete %>
-            </div>
-          </li>
+            <li class="nav-item dropdown">
+              <%= link_to "S'inscrire/ Se connecter", nil, class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %> 
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <%= link_to "S'inscrire", new_user_registration_path, class: "dropdown-item" %>
+                <%= link_to "Se connecter", new_user_session_path, class: "dropdown-item" %>
+              </div>
+            </li>
           <% end %>
         </ul>
       </div>
