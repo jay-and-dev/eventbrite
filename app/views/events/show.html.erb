@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card text-center mb-5 mt-5">
+    <h5 class="card-header">Evénement numéro <%= @event.id %></h5>
+    <div class="card-body">
+      <h2 class="card-title mb-5">Date de début: <%= @event.start_date %></h2>
+      <h3 class="card-text mb-5">Date de fin: <%= @event.end_date %></h3>
+      <h3 class="card-text mb-5">Durée: <%= @event.duration %> minutes</h3>
+      <h2 class="card-title mb-5">Titre: <%= @event.title %></h2>
+      <h3 class="card-text mb-5">Description: <%= @event.description %></h3>
+      <h3 class="card-text mb-5">Prix: <%= @event.price %> euros</h3>
+      <h3 class="card-text mb-5">Lieu: <%= @event.location %></h3>
+      <h3 class="card-text mb-5">Organisateur: <%= @event.admin.email %></h3>
+      <h3>Participants (<%= @event.users.count %>)</h3>
+      <p>
+        <% if current_user.id == @event.admin_id %>  
+          <%= link_to "Supprimer l\'événement", event_path(@event), class: "btn btn-danger", data: {confirm: "Es-tu sur?", method: "delete"} %>
+        <% end %>  
+      </p>
+    </div>
+  </div>  
+</div>
