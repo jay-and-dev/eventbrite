@@ -31,6 +31,6 @@ class Event < ApplicationRecord
 
   def duration_modulo_5?
     errors.add(:duration, "doit etre positif et un multiple de 5") unless
-      duration%5 == 0 && duration > 0
+      duration.to_i%5 == 0 && duration.to_i > 0
   end  
 end

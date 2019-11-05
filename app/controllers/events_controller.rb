@@ -14,10 +14,10 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(start_date: params[:start_date], duration: params[:duration], title: params[:title], description: params[:description], price: params[:price], location: params[:location], admin_id: current_user.id)
+    @event = Event.new(start_date: params[:start_date][0], duration: params[:duration][0], title: params[:title], description: params[:description], price: params[:price][0], location: params[:location], admin_id: current_user.id)
     if @event.save
       #flash[:success] = "Le potin a été créé"
-      redirect_to :show
+      redirect_to @event
     else
       render :new
     end
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     if @event.destroy
-      flash[:success] = "Le potin a été supprimé"
+      flash[:success] = "L'événement a été supprimé"
       redirect_to action: 'index'
     end
   end
