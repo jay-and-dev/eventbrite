@@ -8,6 +8,15 @@
       <h3 class="card-text mb-5">Email : <%= @user.email %></h3>
       <p><%= link_to "Modifier email/mot de passe", edit_user_registration_path(@user.id), class: "btn btn-success" %></p>
     </div>
-  </div>  
+  </div>
+  <h2>Evenements créés </h2>
+  <% @user.events_hosted.each do |event| %>
+      <div class="card m-2 shadow-sm p-3 mb-5  rounded hoverable gossip" style="width: 15rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p><%= link_to "Plus d'infos", event_path(event.id), class: "btn btn-primary" %></p>
+        </div>
+      </div> 
+  <% end %>  
   <p><%= link_to "Retourner à la liste des événements", root_path, class: "btn btn-primary" %></p>
 </div>
