@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card text-center mb-5 mt-5">
+    <h5 class="card-header">ID utilisateur <%= @user.id %></h5>
+    <div class="card-body">
+      <h3 class="card-title mb-5">Prénom : <%= @user.first_name %></h3>
+      <h3 class="card-title mb-5">Nom : <%= @user.last_name %></h3>    
+      <h3 class="card-text mb-5">Description : <%= @user.description %></h3>
+      <h3 class="card-text mb-5">Email : <%= @user.email %></h3>
+      <p><%= link_to "Modifier email/mot de passe", edit_user_registration_path(@user.id), class: "btn btn-success" %></p>
+    </div>
+  </div>  
+  <p><%= link_to "Retourner à la liste des événements", root_path, class: "btn btn-primary" %></p>
+</div>
