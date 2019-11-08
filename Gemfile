@@ -68,4 +68,6 @@ gem 'faker'
 
 gem 'dotenv-rails'
 
+gem 'stripe'
+
 gem 'devise'

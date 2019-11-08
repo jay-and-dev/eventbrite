@@ -12,10 +12,13 @@
       <h3 class="card-text mb-5">Organisateur: <%= @event.admin.email %></h3>
       <h3>Participants (<%= @event.users.count %>)</h3>
       <p>
-        <% if current_user.id == @event.admin_id %>  
+        <% if !not_admin(@event) %>  
           <%= link_to "Supprimer l\'événement", event_path(@event), class: "btn btn-danger", data: {confirm: "Es-tu sur?", method: "delete"} %>
         <% end %>  
       </p>
     </div>
-  </div>  
+  </div> 
+  <% if not_admin(@event) && not_attendee(@event) %> 
+  <%= link_to "Rejoindre l\'événement", new_event_attendance_path(@event.id), class: "btn btn-success" %>
+  <% end %>
 </div>
