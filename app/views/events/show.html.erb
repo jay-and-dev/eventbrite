@@ -10,15 +10,20 @@
       <h3 class="card-text mb-5">Prix: <%= @event.price %> euros</h3>
       <h3 class="card-text mb-5">Lieu: <%= @event.location %></h3>
       <h3 class="card-text mb-5">Organisateur: <%= @event.admin.email %></h3>
-      <h3>Participants (<%= @event.users.count %>)</h3>
+      <h3>Liste des participants (<%= @event.users.count %>)</h3>
+      <ul class="text-left">
+      <% @event.users.each do |user| %>
+      <li><%= user.email %></li>
+      <% end %>
+      </ul>
       <p>
-        <% if !not_admin(@event) %>  
+        <% if is_admin(@event) %>  
           <%= link_to "Supprimer l\'événement", event_path(@event), class: "btn btn-danger", data: {confirm: "Es-tu sur?", method: "delete"} %>
         <% end %>  
       </p>
     </div>
   </div> 
-  <% if not_admin(@event) && not_attendee(@event) %> 
+  <% if !is_attendee(@event) %> 
   <%= link_to "Rejoindre l\'événement", new_event_attendance_path(@event.id), class: "btn btn-success" %>
   <% end %>
 </div>
