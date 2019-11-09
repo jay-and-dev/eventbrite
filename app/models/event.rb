@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   belongs_to :admin, class_name: "User"
   has_many :attendances, dependent: :destroy 
   has_many :users, through: :attendances
+  has_one_attached :avatar
 
   validate :start_after_today?
 
@@ -21,6 +22,8 @@ class Event < ApplicationRecord
 
   validates :location,
   presence:true
+
+  
 
   def end_date
     return start_date + (duration*60)

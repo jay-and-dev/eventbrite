@@ -1,4 +1,9 @@
-<div class="container">
+<div class="container text-center">
+  <%if @event.avatar.attached?%>
+    <%= image_tag @event.avatar, alt: 'avatar' %>
+  <%else%>
+    <p>=== Il n'y a pas encore d'image lié à cet événement ===</p>
+  <%end%>
   <div class="card text-center mb-5 mt-5">
     <h5 class="card-header">Evénement numéro <%= @event.id %></h5>
     <div class="card-body">
