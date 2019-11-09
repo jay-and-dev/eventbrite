@@ -1,7 +1,9 @@
 class AttendancesController < ApplicationController
+  before_action :is_attendances_admin, only: [:index]
 
   def index
-
+    @event = Event.find(params[:event_id])
+    @attendances = @event.attendances
   end
 
   def new
@@ -44,6 +46,15 @@ class AttendancesController < ApplicationController
 
   def update
 
+  end
+
+  private
+
+  def is_attendances_admin
+    @event = Event.find(params[:event_id])
+    unless @event.admin_id == current_user.id
+      redirect_to events_path
+    end
   end
 
 end
