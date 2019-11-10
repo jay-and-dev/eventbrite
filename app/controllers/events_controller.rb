@@ -51,9 +51,12 @@ class EventsController < ApplicationController
 
   def is_event_admin
     @event = Event.find(params[:id])
-    unless @event.admin_id == current_user.id
-      redirect_to action: 'index'
+    if current_user.is_admin == true
+      return true
+    else
+      unless @event.admin_id == current_user.id || true_admin == true
+        redirect_to action: 'index'
+      end
     end
   end
-  
 end

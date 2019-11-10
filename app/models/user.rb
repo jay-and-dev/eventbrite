@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
 
-  has_many :events_hosted, foreign_key: 'admin_id', class_name: "Event"
+  has_many :events_hosted, foreign_key: 'admin_id', class_name: "Event", dependent: :destroy
   has_many :attendances
   has_many :events, through: :attendances
   

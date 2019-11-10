@@ -10,6 +10,7 @@ User.destroy_all
 Event.destroy_all
 Attendance.destroy_all
 
+king = User.create(first_name: Faker::Name.name, last_name: Faker::Name.last_name, password: "kingof", description: Faker::Movie.quote, email: "jj@yopmail.com", is_admin: true)
 u = User.create(first_name: Faker::Name.name, last_name: Faker::Name.last_name, password: "okokok", description: Faker::Movie.quote, email: "dexterthp@yopmail.com")
 
 10.times do |index|
