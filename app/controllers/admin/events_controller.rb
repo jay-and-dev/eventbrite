@@ -1,9 +1,8 @@
 class Admin::EventsController < ApplicationController
-  include ApplicationHelper
   before_action :true_admin, only: [:index]
 
   def index
-    @events = Event.all
+    @events = Event.where(validated: true)
   end
 
   private

@@ -1,2 +1,21 @@
-<h1>Admin::EventSubmissions#edit</h1>
-<p>Find me in app/views/admin/event_submissions/edit.html.erb</p>
+<% if @event.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <p>Nous n'avons pas réussi à créer l'événement pour la (ou les) raison(s) suivante(s) :</p>
+    <% @event.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="card mb-5 mt-5">
+    <h5 class="card-header">Valider l'événement n° <%= @event.id %>, intitulé <%= @event.title %></h5>
+    <br>
+    <%= form_tag url_for(action: 'update'), method: "patch" do %>
+      <div class="form-group">
+        <%= check_box_tag 'validated', @event.validated, class: 'form-control' %> Cocher la case pour confirmer l'événement
+      </div>    
+      <%= submit_tag "Modifier l\'événement", class: "btn btn-primary mb-3" %>
+    <% end %>
+  </div>
+</div>

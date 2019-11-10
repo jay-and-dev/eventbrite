@@ -1,5 +1,6 @@
 <div class="container">
-  <h2 class="text-center mb-5">Gestion des événements</h2>
+  <h2 class="text-center mb-5">Gestion des utilisateurs</h2>
+  <%= link_to "Dashboard administrateur", admin_root_path, class: "nav-link" %>
   <div class="text-center">
       <% @users.each do |user| %>
         <div class="card m-2 shadow-sm p-3 mb-5  rounded hoverable event">
