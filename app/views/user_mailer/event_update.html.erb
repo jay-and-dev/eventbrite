@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Salut <%= @event.admin.email %>, l'administrateur du site a changé le statut de ton événement !</h1>
+    <p>
+      il est passé au statut : <%= @event.validated %>.
+    </p>
+    <p>
+      Pour accéder à ton espace perso, connecte-toi via : <%= @url %>.
+    </p>
+    <p> À très vite sur real-eventbrute !
+  </body>
+</html>
