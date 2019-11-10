@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :is_event_admin, only: [:edit, :update, :destroy]
 
   def index
-    @events = Event.all
+    @events = Event.where(validated: true)
   end
 
   def show
