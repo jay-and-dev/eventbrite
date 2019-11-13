@@ -1,0 +1,33 @@
+footer {
+  padding: 10px;
+}
+
+.large_banner {
+  background-image: url("../images/bl.png");
+  background-size: cover;
+  height: 500px;
+}
+
+.text_large_banner {
+  align-items: center;
+  padding-top: 150px;
+}
+
+.small_banner {
+  background-image: url("../images/bl.png");
+  background-size: cover;
+}
+
+.text_small_banner {
+  align-items: center;
+  padding-top: 90px;
+  height: 250px;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.card-event {
+  height: 150px;
+}
