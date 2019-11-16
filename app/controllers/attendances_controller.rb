@@ -32,11 +32,11 @@ class AttendancesController < ApplicationController
 
     @attendance = Attendance.new(stripe_customer_id: customer.id, user_id: current_user.id, event_id: @event.id)
     @attendance.save 
-      
+    flash[:success] = "Vous avez rejoint l'événement"  
     redirect_to @event  
     
     rescue Stripe::CardError => e
-      flash[:error] = e.message
+      flash.now[:error] = e.message
       render :new 
   end
 

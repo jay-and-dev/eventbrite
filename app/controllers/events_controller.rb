@@ -18,9 +18,10 @@ class EventsController < ApplicationController
     @event = Event.new(start_date: params[:start_date], duration: params[:duration], title: params[:title], description: params[:description], price: params[:price], location: params[:location], admin_id: current_user.id)
     @event.avatar.attach(params[:avatar])
     if @event.save
-      #flash[:success] = "Le potin a été créé"
+      flash[:success] = "L'événement a été créé"
       redirect_to @event
     else
+      flash.now[:error] = @event.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -33,8 +34,10 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     event_params = params.permit(:start_date, :duration, :title, :description, :price, :location)
     if @event.update(event_params)
+      flash[:success] = "L'événement a été modifiié"
       redirect_to @event
     else
+      flash.now[:error] = @event.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -55,6 +58,7 @@ class EventsController < ApplicationController
       return true
     else
       unless @event.admin_id == current_user.id || true_admin == true
+        flash[:error] = "Tu ne peux pas voir cet élément"
         redirect_to action: 'index'
       end
     end
