@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      flash[:success] = "L\'utilisateur a été supprimé"
+      flash[:success] = "L\'utilisateur a été supprimé."
       redirect_to root_path
     end
   end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       return true
     else
       unless current_user.id == @user.id 
-        #flash[:warning] = "Connecte toi"
+        flash[:warning] = "Connecte toi."
         redirect_to root_path
       end
     end    

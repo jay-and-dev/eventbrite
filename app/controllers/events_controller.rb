@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     @event = Event.new(start_date: params[:start_date], duration: params[:duration], title: params[:title], description: params[:description], price: params[:price], location: params[:location], admin_id: current_user.id)
     @event.avatar.attach(params[:avatar])
     if @event.save
-      flash[:success] = "L'événement a été créé"
+      flash[:success] = "L'événement a été créé."
       redirect_to @event
     else
       flash.now[:error] = @event.errors.full_messages.to_sentence
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     event_params = params.permit(:start_date, :duration, :title, :description, :price, :location)
     if @event.update(event_params)
-      flash[:success] = "L'événement a été modifiié"
+      flash[:success] = "L'événement a été modifiié."
       redirect_to @event
     else
       flash.now[:error] = @event.errors.full_messages.to_sentence
@@ -45,7 +45,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     if @event.destroy
-      flash[:success] = "L'événement a été supprimé"
+      flash[:success] = "L'événement a été supprimé."
       redirect_to action: 'index'
     end
   end
