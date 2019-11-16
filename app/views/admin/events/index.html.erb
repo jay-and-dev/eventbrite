@@ -1,20 +1,5 @@
 <div class="container">
-  <h2 class="text-center mb-5">Gestion des événements</h2>
-  <%= link_to "Dashboard administrateur", admin_root_path, class: "nav-link" %>
-  <div class="text-center">
-    <div class= "row text-center">
-      <% @events.each do |event| %>
-        <div class="card m-2 shadow-sm p-3 mb-5  rounded hoverable event" style="width: 14rem;">
-          <div class="card-body">
-            <h4 class="card-title"><%= event.title %></h4>
-            <h6>Participants (<%= event.users.count %>)</h6>
-            
-            <p><%= link_to "Lire la suite", event_path(event.id), class: "btn btn-primary" %></p>
-            <p><%= link_to "Editer l\'événement", edit_event_path(event.id), class: "btn btn-warning" %></p>
-            <p><%= link_to "Supprimer l\'événement", event_path(event.id), class: "btn btn-danger", data: {confirm: "Es-tu sur?", method: "delete"} %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <h1 class="text-center mb-5 mt-5">Gestion des événements</h1>
+  <%= link_to "Dashboard administrateur", admin_root_path, class: "btn btn-secondary mb-5" %>
+  <%= render "shared/list_events" %>
 </div>

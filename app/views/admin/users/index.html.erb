@@ -1,6 +1,6 @@
-<div class="container">
-  <h2 class="text-center mb-5">Gestion des utilisateurs</h2>
-  <%= link_to "Dashboard administrateur", admin_root_path, class: "nav-link" %>
+<div class="container mb-5">
+  <h1 class="text-center mb-5 mt-5">Gestion des utilisateurs</h1>
+  <%= link_to "Dashboard administrateur", admin_root_path, class: "btn btn-info" %>
   <div class="text-center">
       <% @users.each do |user| %>
         <div class="card m-2 shadow-sm p-3 mb-5  rounded hoverable event">
@@ -10,8 +10,8 @@
             <h4 class="card-title">prénom: <%= user.first_name %></h4>
             <h4 class="card-title">nom: <%= user.last_name %></h4>
             <h4 class="card-title">description: <%= user.description %></h4>
-            <p><%= link_to "Détails", user_path(user.id), class: "btn btn-primary" %></p>
-            <p><%= link_to "Supprimer", user_path(user.id), class: "btn btn-danger", data: {confirm: "Es-tu sur?", method: "delete"} %></p>
+            <%= link_to "Détails", user_path(user.id), class: "btn btn-primary" %>
+            <%= link_to "Supprimer", user_path(user.id), class: "btn btn-danger", data: {confirm: "Es-tu sur?", method: "delete"} %>
           </div>
         </div>
       <% end %>

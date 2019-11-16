@@ -1,8 +1,4 @@
-<div class="container">
-  <h1 class="text-center mt-5 mb-5">Bienvenue mon ami !</h1>
-  <h2 class="text-center mb-5">Retrouve ci-dessous les derniers événements !</h2>
-  <p class="text-center"><%= link_to "Créer un nouvel événement", new_event_path, :class => "btn btn-success" %></p>
-    <div class="text-center">
+  <div class="text-center">
     <div class= "row text-center">
       <% @events.each do |event| %>
         <div class="col-4 mb-4">
@@ -17,10 +13,11 @@
               <h5 class="card-title"><%= event.title %></h5>
               <h6>Participants (<%= event.users.count %>)</h6>
               <%= link_to "Lire la suite", event_path(event.id), class: "btn btn-primary btn-sm" %>
+              <%= link_to "Editer", edit_event_path(event.id), class: "btn btn-warning btn-sm" %>
+              <%= link_to "Supprimer", event_path(event.id), class: "btn btn-danger btn-sm", data: {confirm: "Es-tu sur?", method: "delete"} %>
             </div>
           </div>
         </div>  
       <% end %>
     </div>
   </div>
-</div>
